@@ -1,0 +1,38 @@
+{
+  "name": "gd_fir_evidence_management",
+  "version": "1.0.0",
+  "description": "Online GD, FIR & Evidence Management System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsifKamalTias/gd_fir_evidence_management.git"
+  },
+  "keywords": [
+    "GD",
+    "FIR",
+    "CRIME",
+    "EVIDENCE",
+    "AUTOMATION",
+    "THANA"
+  ],
+  "author": "ASIF KAMAL TIAS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsifKamalTias/gd_fir_evidence_management/issues"
+  },
+  "homepage": "https://github.com/AsifKamalTias/gd_fir_evidence_management#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
