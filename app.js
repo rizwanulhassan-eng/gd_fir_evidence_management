@@ -14,6 +14,8 @@ app.use(express.json());
 const userRouter = require("./routes/users.route");
 app.use("/api/users", userRouter);
 
+const firRouter = require("./routes/firs.route");
+app.use("/api/firs", firRouter);
 
 // Home Route
 app.get("/", (req, res) => {

@@ -8,10 +8,6 @@ const thanaSchema = mongoose.Schema({
   thanaName: {
     type: String,
     require: true,
-  },
-  thanaAddress: {
-    type: String,
-    require: true,
   }
 });
 

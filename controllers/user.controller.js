@@ -121,4 +121,40 @@ const verifyOTP = async (req, res) => {
   }
 };
 
-module.exports = {index, show, create, update, destroy, verify, verifyPhoneNumber, verifyOTP};
+const verifyLogin = async (req, res) => {
+  try{
+    const user = await User.findOne({ phoneNumber: req.body.phoneNumber, userStatus: "verified", nidNumber: req.body.nidNumber });
+    if(user){
+      user.otp = Math.floor((Math.random() * 9999) + 1000);
+      await user.save();
+      res.status(200).json(user._id);
+    }else{
+      res.status(404).json({message: "Invalid Phone Number or NID"});
+    }
+  }
+  catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+const verifyLoginOTP = async (req, res) => {
+  try{
+    const user = await User.findOne({ _id: req.body.userId });
+    if(user){
+      if(user.otp === req.body.otp){
+        user.otp = null;
+        await user.save();
+        res.status(200).json(user._id);
+      }
+      else{
+        res.status(404).json({message: "Invalid OTP"});
+      }
+    }else{
+      res.status(404).json({message: "Invalid OTP"});
+    }
+  }
+  catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+module.exports = {index, show, create, update, destroy, verify, verifyPhoneNumber, verifyOTP, verifyLogin, verifyLoginOTP};

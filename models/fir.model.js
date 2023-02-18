@@ -20,10 +20,6 @@ const firSchema = mongoose.Schema({
     type: String,
     require: true,
     },
-    mediaGD: {
-    type: String,
-    require: false,
-    },
     description: {
     type: String,
     require: true,
@@ -35,6 +31,15 @@ const firSchema = mongoose.Schema({
     assignedOfficer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "InvestigationOfficer",
+    require: false,
+    },
+    forensicOfficer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ForensicOfficer",
+    require: false,
+    },
+    suspectInfo: {
+    type: String,
     require: false,
     },
     result: {

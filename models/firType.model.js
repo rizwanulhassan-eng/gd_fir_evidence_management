@@ -7,4 +7,4 @@ const firTypeSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("FIRTypeSchema", firTypeSchema);
+module.exports = mongoose.model("FIRType", firTypeSchema);

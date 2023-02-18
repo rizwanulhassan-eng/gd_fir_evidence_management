@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const investigationOfficerSchema = mongoose.Schema({
-    nidNumber: {
+    id: {
         type: String,
         require: true,
       },

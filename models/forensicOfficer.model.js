@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const forensicOfficerSchema = mongoose.Schema({
-    nidNumber: {
+    id: {
         type: String,
         require: true,
       },
@@ -27,4 +27,4 @@ const forensicOfficerSchema = mongoose.Schema({
       },
 });
 
-module.exports = mongoose.model("ForensicOfficerSchema", forensicOfficerSchema);
+module.exports = mongoose.model("ForensicOfficer", forensicOfficerSchema);
