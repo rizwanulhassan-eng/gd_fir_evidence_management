@@ -1,5 +1,5 @@
 const express = require("express");
-const { index, show, update, destroy, verifyLogin, verifyLoginOTP } = require("../controllers/officer.controller");
+const { index, show, update, destroy, verifyLogin, verifyLoginOTP, assignedCases } = require("../controllers/officer.controller");
 const { route } = require("../app");
 const router = express.Router();
 
@@ -10,5 +10,6 @@ router.get("/destroy/:id", destroy);
 
 router.post("/login/verify", verifyLogin);
 router.post("/login/verify/otp", verifyLoginOTP);
+router.post("/assigned-cases", assignedCases);
 
 module.exports = router;

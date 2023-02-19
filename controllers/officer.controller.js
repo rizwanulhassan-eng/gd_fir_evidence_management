@@ -1,4 +1,5 @@
 const Officer = require("../models/investigationOfficer.model");
+const FIR = require("../models/fir.model");
 const { readFileSync } = require('fs');
 
 // methods
@@ -82,4 +83,23 @@ const verifyLoginOTP = async (req, res) => {
   }
 };
 
-module.exports = { index, show, update, destroy, verifyLogin, verifyLoginOTP };
+const assignedCases = async (req, res) => {
+  try {
+    const officer = await Officer.findOne({ _id: req.body.policeId });
+    if (officer) {
+      const firs = await FIR.find({ assignedOfficer: officer._id }).populate("userId")
+        .populate("thanaId")
+        .populate("firType")
+        .populate("assignedOfficer")
+        .populate("forensicOfficer")
+        .populate("suspectInfo");
+      res.status(200).json(firs);
+    } else {
+      res.status(404).json({ message: "Invalid Officer" });
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+module.exports = { index, show, update, destroy, verifyLogin, verifyLoginOTP, assignedCases };
