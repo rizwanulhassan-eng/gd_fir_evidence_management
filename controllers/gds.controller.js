@@ -3,6 +3,28 @@ const Thana = require("../models/thana.model");
 const GDType = require("../models/gdType.model");
 
 //methods
+const index = async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const gds = await GD.find({ userId: userId });
+        const gdsWithThanaAndGDType = await Promise.all(gds.map(async (gd) => {
+            const thana = await Thana.findById(gd.thanaId);
+            const gdType = await GDType.findById(gd.gdType);
+            return {
+                _id: gd._id,
+                thanaId: thana.thanaName,
+                gdType: gdType.type,
+                description: gd.description,
+                status: gd.status,
+                createdOn: gd.createdOn,
+            }
+        }));
+        res.status(200).json({ gdsWithThanaAndGDType });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
 const create = async (req, res) => {
     try {
         const thanas = await Thana.find();
@@ -91,4 +113,4 @@ const store = async (req, res) => {
 };
 */
 
-module.exports = { create, store };
+module.exports = { index, create, store };
