@@ -49,13 +49,13 @@ const destroy = async (req, res) => {
 
 const verifyLogin = async (req, res) => {
   try {
-    const officer = await Officer.findOne({ phoneNumber: req.body.phoneNumber, officerStatus: "loggedIn", id: req.body.id });
+    const officer = await Officer.findOne({ phoneNumber: req.body.phoneNumber, id: req.body.id });
     if (officer) {
       officer.otp = Math.floor((Math.random() * 9999) + 1000);
       await officer.save();
       res.status(200).json(officer._id);
     } else {
-      res.status(404).json({ message: "Invalid Phone Number or NID" });
+      res.status(404).json({ message: "Invalid Phone Number or ID" });
     }
   } catch (error) {
     res.status(500).send(error.message);
@@ -75,7 +75,7 @@ const verifyLoginOTP = async (req, res) => {
         res.status(404).json({ message: "Invalid OTP" });
       }
     } else {
-      res.status(404).json({ message: "Invalid OTP" });
+      res.status(404).json({ message: "Invalid Officer" });
     }
   } catch (error) {
     res.status(500).send(error.message);
