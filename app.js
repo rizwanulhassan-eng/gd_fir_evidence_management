@@ -17,8 +17,14 @@ app.use("/api/users", userRouter);
 const firRouter = require("./routes/firs.route");
 app.use("/api/firs", firRouter);
 
+<<<<<<< Updated upstream
 const gdRouter = require("./routes/gds.route");
 app.use("/api/gds", gdRouter);
+=======
+//Investigating Officer Routes
+const officerRouter = require("./routes/officers.route");
+app.use("/api/officers", officerRouter);
+>>>>>>> Stashed changes
 
 // Home Route
 app.get("/", (req, res) => {

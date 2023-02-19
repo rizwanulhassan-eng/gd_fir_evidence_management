@@ -1,0 +1,2 @@
+PORT=3100
+DB=mongodb+srv://tias:tias101@cluster0.vf15ykq.mongodb.net/gd_fir_db
