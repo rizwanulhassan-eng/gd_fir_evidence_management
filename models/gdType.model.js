@@ -7,4 +7,4 @@ const gdTypeSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("GDTypeSchema", gdTypeSchema);
+module.exports = mongoose.model("GDType", gdTypeSchema);
